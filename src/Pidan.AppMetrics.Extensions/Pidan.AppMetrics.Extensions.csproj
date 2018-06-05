@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.1.0</Version>
+    <Authors>pidan</Authors>
+    <Copyright>pidan</Copyright>
+    <PackageIconUrl>https://www.app-metrics.io/images/favicon.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/cdpidan</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/cdpidan</RepositoryUrl>
+    <Description>为了便捷的使用AppMetrics</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="App.Metrics" Version="2.1.0" />
+    <PackageReference Include="App.Metrics.AspNetCore" Version="2.0.0" />
+    <PackageReference Include="App.Metrics.Reporting.InfluxDB" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.0.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Release\netstandard2.0\Pidan.AppMetrics.Extensions.pdb">
+      <PackagePath>lib/netstandard2.0/</PackagePath>
+      <Pack>true</Pack>
+    </None>
+  </ItemGroup>
+</Project>
