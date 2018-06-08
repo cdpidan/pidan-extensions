@@ -1,31 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>pidan</Authors>
-    <Company>pidan</Company>
-    <Version>0.1.0</Version>
-    <Description>为了便捷的使用Consul</Description>
-    <PackageIconUrl>https://www.consul.io/assets/images/favicons/apple-touch-icon-795c3543.png</PackageIconUrl>
-    <PackageProjectUrl>https://github.com/cdpidan</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/cdpidan</RepositoryUrl>
-    <Copyright>pidan</Copyright>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Consul" Version="0.7.2.4" />
-    <PackageReference Include="DnsClient" Version="1.0.7" />
-    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.0.3" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.0.2" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.0.2" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="bin\Release\netstandard2.0\Pidan.Consul.Extensions.pdb">
-      <PackagePath>lib/netstandard2.0/</PackagePath>
-      <Pack>true</Pack>
-    </None>
+    <PackageReference Include="DnsClient" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.0" />
   </ItemGroup>
 </Project>

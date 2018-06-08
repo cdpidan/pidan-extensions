@@ -11,28 +11,26 @@ namespace Pidan.Consul.Extensions
     public static class ConsulServiceCollectionExtensions
     {
         public static IServiceCollection AddConsulDiscoveryClient(this IServiceCollection services,
-            IConfiguration configuration)
+            Action<ServiceDiscoveryOptions> action)
         {
-            //注册Consul 配置
-            services.Configure<ServiceDiscoveryOptions>(configuration);
+            services.Configure(action);
+            
+            var options = new ServiceDiscoveryOptions();
 
-            services.AddSingleton<IConsulClient>(p => new ConsulClient(cfg =>
-            {
-                var serviceDiscoveryOptions = p.GetRequiredService<IOptions<ServiceDiscoveryOptions>>().Value;
+            action(options);
 
-                if (!string.IsNullOrWhiteSpace(serviceDiscoveryOptions.Consul.HttpEndPoint))
+            if (options.Consul == null)
+                return services;
+
+            if (!string.IsNullOrWhiteSpace(options.Consul.HttpEndPoint))
+                services.AddSingleton<IConsulClient>(p => new ConsulClient(cfg =>
                 {
-                    // if not configured, the client will use the default value "127.0.0.1:8500"
-                    cfg.Address = new Uri(serviceDiscoveryOptions.Consul.HttpEndPoint);
-                }
-            }));
-            
-            services.AddSingleton<IDnsQuery>(p =>
-            {
-                var serviceDiscoveryOptions = p.GetRequiredService<IOptions<ServiceDiscoveryOptions>>().Value;
-                return new LookupClient(serviceDiscoveryOptions.Consul.DnsEndPoint.ToIPEndPoint());
-            });
-            
+                    cfg.Address = new Uri(options.Consul.HttpEndPoint);
+                }));
+
+            if (options.Consul.DnsEndPoint != null)
+                services.AddSingleton<IDnsQuery>(p => new LookupClient(options.Consul.DnsEndPoint.ToIPEndPoint()));
+
             return services;
         }
     }

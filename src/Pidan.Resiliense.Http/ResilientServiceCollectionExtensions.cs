@@ -31,7 +31,7 @@ namespace Pidan.Resiliense.Http
 
             services
                 .AddSingleton<IHttpClient, ResilientHttpClient>(sp =>
-                    sp.GetService<ResilientHttpClientFactory>().CreateResilientHttpClient());
+                    sp.GetRequiredService<ResilientHttpClientFactory>().CreateResilientHttpClient());
 
             return services;
         }
