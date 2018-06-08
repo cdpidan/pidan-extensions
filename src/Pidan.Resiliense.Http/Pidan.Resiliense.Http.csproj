@@ -19,7 +19,7 @@
     <PackageReference Include="Polly" Version="6.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\Release\netstandard2.0\Pidan.Consul.Extensions.pdb">
+    <None Include="bin\Release\netstandard2.0\Pidan.Resiliense.Http.pdb">
       <PackagePath>lib/netstandard2.0/</PackagePath>
       <Pack>true</Pack>
     </None>
