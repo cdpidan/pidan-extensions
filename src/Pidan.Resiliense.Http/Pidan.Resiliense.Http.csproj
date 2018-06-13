@@ -2,13 +2,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageProjectUrl>https://github.com/cdpidan</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/cdpidan</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/cdpidan/pidan-extensions</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/cdpidan/pidan-extensions</RepositoryUrl>
     <Description>包含可重试/熔断策略的HttpClient</Description>
     <Authors>pidan</Authors>
     <Company>pidan</Company>
     <Copyright>pidan</Copyright>
-    <Version>0.1.1</Version>
+    <Version>0.1.2</Version>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.1.0" />

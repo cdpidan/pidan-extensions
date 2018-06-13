@@ -24,13 +24,17 @@ namespace Pidan.Resiliense.Http
         private readonly HttpClient _client;
         private readonly ILogger<ResilientHttpClient> _logger;
         private readonly Func<string, IEnumerable<Policy>> _policyCreator;
-        private ConcurrentDictionary<string, PolicyWrap> _policyWrappers;
+        private readonly ConcurrentDictionary<string, PolicyWrap> _policyWrappers;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ResilientHttpClient(Func<string, IEnumerable<Policy>> policyCreator, ILogger<ResilientHttpClient> logger,
-            IHttpContextAccessor httpContextAccessor)
+        public ResilientHttpClient(Func<string, IEnumerable<Policy>> policyCreator,
+            ILogger<ResilientHttpClient> logger,
+            IHttpContextAccessor httpContextAccessor,
+            HttpMessageHandler httpMessageHandler = null)
         {
-            _client = new HttpClient();
+            _client = httpMessageHandler == null
+                ? new HttpClient()
+                : new HttpClient(httpMessageHandler);
             _logger = logger;
             _policyCreator = policyCreator;
             _policyWrappers = new ConcurrentDictionary<string, PolicyWrap>();
@@ -225,10 +229,10 @@ namespace Pidan.Resiliense.Http
 
         private void SetAuthorizationHeader(HttpRequestMessage requestMessage)
         {
-            var authorizationHeader = _httpContextAccessor.HttpContext.Request.Headers["Authorization"];
+            var authorizationHeader = _httpContextAccessor?.HttpContext?.Request?.Headers["Authorization"];
             if (!string.IsNullOrEmpty(authorizationHeader))
             {
-                requestMessage.Headers.Add("Authorization", new List<string>() {authorizationHeader});
+                requestMessage.Headers.Add("Authorization", new List<string> {authorizationHeader});
             }
         }
     }

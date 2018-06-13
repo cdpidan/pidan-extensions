@@ -13,10 +13,12 @@ namespace Pidan.Resiliense.Http
         private readonly int _retryCount;
         private readonly int _exceptionsAllowedBeforeBreaking;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly HttpMessageHandler _httpMessageHandler;
 
         public ResilientHttpClientFactory(ILogger<ResilientHttpClient> logger, IHttpContextAccessor httpContextAccessor,
-            int exceptionsAllowedBeforeBreaking = 5, int retryCount = 5)
+            int exceptionsAllowedBeforeBreaking = 5, int retryCount = 5, HttpMessageHandler httpMessageHandler = null)
         {
+            _httpMessageHandler = httpMessageHandler;
             _logger = logger;
             _exceptionsAllowedBeforeBreaking = exceptionsAllowedBeforeBreaking;
             _retryCount = retryCount;
@@ -24,7 +26,7 @@ namespace Pidan.Resiliense.Http
         }
 
         public ResilientHttpClient CreateResilientHttpClient()
-            => new ResilientHttpClient(origin => CreatePolicies(), _logger, _httpContextAccessor);
+            => new ResilientHttpClient(origin => CreatePolicies(), _logger, _httpContextAccessor, _httpMessageHandler);
 
         private Policy[] CreatePolicies()
         {

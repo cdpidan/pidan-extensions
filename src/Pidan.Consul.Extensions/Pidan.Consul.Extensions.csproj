@@ -3,24 +3,24 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageIconUrl>https://www.consul.io/assets/images/favicons/apple-touch-icon-795c3543.png</PackageIconUrl>
-        <PackageProjectUrl>https://github.com/cdpidan</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/cdpidan</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/cdpidan/pidan-extensions</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/cdpidan/pidan-extensions</RepositoryUrl>
         <Description>为了便捷的使用Consul</Description>
         <Copyright>pidan</Copyright>
         <Authors>pidan</Authors>
         <Company>pidan</Company>
-        <Version>0.1.1</Version>
+        <Version>0.1.2</Version>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Consul" Version="0.7.2.4"/>
-        <PackageReference Include="DnsClient" Version="1.1.0"/>
-        <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.1.0"/>
-        <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.1.0"/>
-        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.0"/>
-        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.1.0"/>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.0"/>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.0"/>
-        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.0"/>
+        <PackageReference Include="Consul" Version="0.7.2.4" />
+        <PackageReference Include="DnsClient" Version="1.1.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.1.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.1.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.1.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.1.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.0" />
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.0" />
     </ItemGroup>
     <ItemGroup>
         <None Include="bin\Release\netstandard2.0\Pidan.Consul.Extensions.pdb">

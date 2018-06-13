@@ -7,7 +7,7 @@ namespace Pidan.Consul.Extensions
     {
         public static string ResolveDefaultServiceUrl(this IDnsQuery dnsQuery, string serviceName, string scheme = "http")
         {
-            var addresses = dnsQuery.ResolveService("service.consul", "user_api");
+            var addresses = dnsQuery.ResolveService("service.consul", serviceName);
             var address = addresses.FirstOrDefault();
             if (address == null)
             {
