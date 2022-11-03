@@ -40,7 +40,7 @@ namespace Pidan.AppMetrics.Extensions
                 .Build();
 
             services.AddMetrics(metrics);
-            services.AddMetricsReportScheduler();
+            services.AddMetricsReportingHostedService();
             services.AddMetricsTrackingMiddleware();
             services.AddMetricsEndpoints();
 

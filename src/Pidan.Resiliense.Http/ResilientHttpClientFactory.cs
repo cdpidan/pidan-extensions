@@ -2,7 +2,6 @@
 using System.Net.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Pidan.Resiliense.Http;
 using Polly;
 
 namespace Pidan.Resiliense.Http

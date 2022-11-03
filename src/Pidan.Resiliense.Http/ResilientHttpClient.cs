@@ -23,11 +23,11 @@ namespace Pidan.Resiliense.Http
     {
         private readonly HttpClient _client;
         private readonly ILogger<ResilientHttpClient> _logger;
-        private readonly Func<string, IEnumerable<Policy>> _policyCreator;
+        private readonly Func<string, IEnumerable<IAsyncPolicy>> _policyCreator;
         private readonly ConcurrentDictionary<string, PolicyWrap> _policyWrappers;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public ResilientHttpClient(Func<string, IEnumerable<Policy>> policyCreator,
+        public ResilientHttpClient(Func<string, IEnumerable<IAsyncPolicy>> policyCreator,
             ILogger<ResilientHttpClient> logger,
             IHttpContextAccessor httpContextAccessor,
             HttpMessageHandler httpMessageHandler = null)
@@ -178,15 +178,16 @@ namespace Pidan.Resiliense.Http
         {
             var normalizedOrigin = NormalizeOrigin(origin);
 
-            if (!_policyWrappers.TryGetValue(normalizedOrigin, out PolicyWrap policyWrap))
+            if (!_policyWrappers.TryGetValue(normalizedOrigin, out var policyWrap))
             {
-                policyWrap = Policy.WrapAsync(_policyCreator(normalizedOrigin).ToArray());
+                var asyncPolicies = _policyCreator(normalizedOrigin).ToArray();
+                policyWrap = Policy.WrapAsync(asyncPolicies);
                 _policyWrappers.TryAdd(normalizedOrigin, policyWrap);
             }
 
             // Executes the action applying all 
             // the policies defined in the wrapper
-            return await policyWrap.ExecuteAsync(action, context: new Context(normalizedOrigin));
+            return await policyWrap.Execute(action, context: new Context(normalizedOrigin));
         }
 
         private HttpRequestMessage GetHttpRequestMessage(string url, HttpMethod method, Func<HttpContent> func)
@@ -232,7 +233,7 @@ namespace Pidan.Resiliense.Http
             var authorizationHeader = _httpContextAccessor?.HttpContext?.Request?.Headers["Authorization"];
             if (!string.IsNullOrEmpty(authorizationHeader))
             {
-                requestMessage.Headers.Add("Authorization", new List<string> {authorizationHeader});
+                requestMessage.Headers.Add("Authorization", new List<string> { authorizationHeader });
             }
         }
     }

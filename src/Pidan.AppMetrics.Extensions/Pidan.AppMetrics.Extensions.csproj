@@ -11,11 +11,11 @@
     <Description>为了便捷的使用AppMetrics</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="App.Metrics" Version="2.1.0" />
-    <PackageReference Include="App.Metrics.AspNetCore" Version="2.0.0" />
-    <PackageReference Include="App.Metrics.Reporting.InfluxDB" Version="2.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.0" />
+    <PackageReference Include="App.Metrics" Version="4.3.0" />
+    <PackageReference Include="App.Metrics.AspNetCore" Version="4.3.0" />
+    <PackageReference Include="App.Metrics.Reporting.InfluxDB" Version="4.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Release\netstandard2.0\Pidan.AppMetrics.Extensions.pdb">
